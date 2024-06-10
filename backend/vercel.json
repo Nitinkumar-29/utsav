@@ -8,6 +8,18 @@
   ],
   "routes": [
     {
+      "src": "/api/auth/(.*)",
+      "dest": "index.js"
+    },
+    {
+      "src": "/api/notify/(.*)",
+      "dest": "index.js"
+    },
+    {
+      "src": "/api/activity/(.*)",
+      "dest": "index.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "index.js"
     }
