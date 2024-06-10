@@ -3,8 +3,7 @@ const bodyParser = require("body-parser");
 const connectToMongo = require("./db/db");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
-require("dotenv").config()
-const port = process.env.PORT;
+const port = 8000;
 
 connectToMongo();
 const app = express();
