@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: utsav-backend
-    env: node
-    region: oregon
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && node index.js
-    plan: free
-    autoDeploy: true
