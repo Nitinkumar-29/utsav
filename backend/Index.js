@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const connectToMongo = require("./db/db");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
-require("dotenv").config();
+require("dotenv").config()
 const port = process.env.PORT;
 
 connectToMongo();
@@ -19,10 +19,6 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-
-app.get("/", (req, res) => {
-  return res.send("Hello World");
-});
 
 // adding routes
 app.use("/api/auth", require("./routes/auth"));
@@ -43,6 +39,10 @@ process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   // Optionally exit the process
   process.exit(1);
+});
+
+app.get("/", (req, res) => {
+  return res.send("Hello World");
 });
 
 app.listen(port, () => {
