@@ -7,7 +7,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const Reviews = require("../models/Review");
-require("dotenv").config()
+const JWT_SECRET = "utsav-application@2905";
+
 // Create user route
 router.post(
   "/createUser",
@@ -52,7 +53,7 @@ router.post(
         },
       };
       // create authentication token
-      const authToken = jwt.sign(data, process.env.JWT_SECRET);
+      const authToken = jwt.sign(data, JWT_SECRET);
       res.json({ authToken });
       console.log("Account created successfully");
     } catch (error) {
@@ -85,7 +86,7 @@ router.post("/sendEmail", fetchUser, async (req, res) => {
       },
     };
 
-    const token = jwt.sign(data, process.env.JWT_SECRET, { expiresIn: "10m" });
+    const token = jwt.sign(data, JWT_SECRET, { expiresIn: "10m" });
 
     const mailConfigurations = {
       from: "nimble2905@gmail",
@@ -136,7 +137,7 @@ router.post(
         },
       };
       // create auth token
-      const authToken = jwt.sign(data, process.env.JWT_SECRET);
+      const authToken = jwt.sign(data, JWT_SECRET);
       const success = true;
       res.json({ success, authToken });
       console.log("User logged in successfully");
