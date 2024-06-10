@@ -20,7 +20,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   return res.send("Hello World");
 });
 
