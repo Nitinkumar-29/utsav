@@ -8,8 +8,6 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const Reviews = require("../models/Review");
 require("dotenv").config()
-
-
 // Create user route
 router.post(
   "/createUser",
