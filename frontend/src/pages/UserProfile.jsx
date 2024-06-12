@@ -50,7 +50,7 @@ const UserProfile = () => {
               <RxActivityLog size={20} />
               <span className="flex">Activity</span>
             </Link>
-            <Link
+            {/* <Link
               to="/userProfile/settings"
               className={`font-medium bg-red-700 ${
                 location.pathname === "/userProfile/settings"
@@ -69,7 +69,7 @@ const UserProfile = () => {
               <CiSettings size={25} />
 
               <span className="flex">Settings</span>
-            </Link>
+            </Link> */}
           </div>
           <div className="flex items-center justify-between w-full h-full p-4">
             <Outlet />
