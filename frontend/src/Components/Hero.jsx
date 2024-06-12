@@ -5,37 +5,21 @@ const Hero = () => {
   return (
     <>
       <div className="bg-gradient-to-bl from-blue-100 to-red-100 h-[50vh] border-0 flex justify-center items-center border-black">
-        <div className="space-y-10 border-0 border-black flex flex-col w-2/3 items-center">
-          <div className="flex flex-col h-[20vh] justify-center items-center space-y-4">
+        <div className="space-y-10 border-0 border-black flex flex-col w-3/4 lg:w-2/3 items-center">
+          <div className="flex flex-col h-[20vh] justify-center items-center space-y-4 w-full">
             <span
-              className="font-semibold text-xl md:text-3xl"
+              className="font-semibold text-2xl md:text-3xl text-center lg:text-start"
               style={{ fontFamily: "sans-serif" }}
             >
               Let's help you to make your events memorable than ever.
             </span>
             <span
-              className="font-medium md:text-xl"
+              className="font-medium md:text-xl text-center lg:text-start"
               style={{ fontFamily: "sans-serif" }}
             >
               Your Occasion, Our Inspiration - Together We Create Magic.
             </span>
           </div>
-          {/* search bar for searching different categories and other  */}
-          {/* <div className="">
-            <div className="border-0 border-b-2 border-black justify-between flex items-end">
-              <input
-                style={{ fontFamily: "sans-serif" }}
-                type="search"
-                placeholder="Try searching what you're looking for.."
-                className="md:placeholder:text-[1.5rem] h-fit border-0  mt-10 outline-none bg-inherit w-[40vh] md:w-[60vh]"
-                name=""
-                id=""
-              />
-              <span className="animate-bounce">
-                <FaSearch size={20} />
-              </span>
-            </div>
-          </div> */}
         </div>
       </div>
       {/* why we content */}

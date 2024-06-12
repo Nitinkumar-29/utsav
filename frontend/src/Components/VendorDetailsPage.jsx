@@ -184,35 +184,28 @@ const VendorDetailsPage = () => {
     <>
       <div
         style={{ fontFamily: "sans-serif" }}
-        className="space-y-20 h-full py-12 w-full bg-gradient-to-tr from-red-100 to-blue-100 shadow-inner shadow-slate-400"
+        className="space-y-20 h-full lg:h-fit py-10 w-full bg-gradient-to-tr from-red-100 to-blue-100 shadow-inner shadow-slate-400"
       >
-        <div className="flex flex-col lg:flex-row justify-between h-full w-[94%] rounded-sm mx-auto">
+        <div className="flex flex-col space-y-2 lg:space-y-0 lg:space-x-4 lg:flex-row justify-between h-full w-[94%] rounded-sm mx-auto">
           {venue && (
             <>
               {/* item photo and content */}
               <div className="flex flex-col">
-                <div className="flex justify-center relative h-[76.5vh] w-fit">
+                <div className="relative flex flex-col justify-center sm:items-center h-full sm:h-[76.5vh] w-full">
                   <img
-                    className="rounded-sm h-[400px] shadow-sm shadow-black w-[700px]"
+                    className="rounded-smh-fit sm:h-[340px] lg:shadow-sm shadow-black w-[500px] xs:w-screen sm:w-[600px] lg:w-[500px] xl:w-full rounded-t-md"
                     src={`/vendorsDataImages/${venue.image}`}
                     alt=""
                   />
-                  <div className="absolute bottom-0 rounded-sm space-y-4 flex flex-col justify-start w-[95%] shadow-sm shadow-slate-900 h-52 bg-white">
+                  <div className="sticky rounded-b-mdspace-y-0 lg:space-y-4 flex flex-col justify-start w-full sm:w-[600px] lg:w-[500px] xl:w-full lg:shadow-sm shadow-slate-900 lg:h-52 bg-white">
                     <div className="flex w-full h-full justify-between p-4">
                       <div className="flex flex-col space-y-2 items-start justify-start ">
-                        <span className="font-medium text-xl">
+                        <span className="font-medium lg:text-xl">
                           {venue.name}
                         </span>
                         <div className="flex space-x-2">
-                          <MdLocationOn size={25} />
-                          <span className="text-slate-500">
-                            {venue.location.charAt(0).toUpperCase() +
-                              venue.location.slice(1)}
-                          </span>
-                        </div>
-                        <div className="flex text-slate-400 text-xs space-x-1">
-                          <span>{venue.name}</span>
-                          <span className="">
+                          <MdLocationOn size={20} />
+                          <span className="text-slate-500 text-sm lg:text-base">
                             {venue.location.charAt(0).toUpperCase() +
                               venue.location.slice(1)}
                           </span>
@@ -224,7 +217,7 @@ const VendorDetailsPage = () => {
                       </div>
                       <div>{venue.rating}</div>
                     </div>
-                    <div className="flex items-center justify-between w-full h-16 bg-gray-50">
+                    <div className="flex items-center justify-between w-full text-sm lg:text-base h-12 lg:h-16 bg-gray-50">
                       <div className="flex items-center text-slate-500 hover:text-red-600 cursor-pointer space-x-1 w-full justify-center  border-r-[1px] border-slate-500">
                         <MdPhotoLibrary />
                         <span className="">Photos</span>
@@ -251,9 +244,9 @@ const VendorDetailsPage = () => {
                 </div>
               </div>
               {/* contact components */}
-              <div className="flex flex-col space-y-6 w-[560px]">
+              <div className="flex flex-col space-y-6 w-full lg:w-[560px] pt-4 ">
                 <div className="h-fit bg-transparent w-full">
-                  <div className="flex text-lg items-center justify-around h-fit w-full">
+                  <div className="flex lg:text-lg items-center justify-around h-fit w-full">
                     <button
                       onClick={() => toggleComponent(1)}
                       className={`flex items-center space-x-1 px-4 py-2 w-full h-16 border-red-600 border-r-2 ${
@@ -281,15 +274,15 @@ const VendorDetailsPage = () => {
                   </div>
                   <div className="h-fit bg-white rounded-b-md">
                     {!isVisible ? (
-                      <div className="h-full w-full space-y-4 flex flex-col p-4">
+                      <div className="h-full w-full flex flex-col p-4">
                         <span>Hi {venue.name},</span>
                         <form
                           onSubmit={handleEnquiryByUser}
                           // method="post"
                           className="flex flex-col space-y-6 w-full"
                         >
-                          <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
-                            <div className="w-full mx-auto text-center my-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-2">
+                            <div className="w-full mx-auto text-center my-1">
                               <input
                                 type="text"
                                 name="fullName"
@@ -300,7 +293,7 @@ const VendorDetailsPage = () => {
                                 placeholder="Full name"
                               />
                             </div>
-                            <div className="w-full mx-auto text-center my-4">
+                            <div className="w-full mx-auto text-center my-1">
                               <input
                                 type="phone"
                                 name="contactNumber"
@@ -313,7 +306,7 @@ const VendorDetailsPage = () => {
                                 placeholder="Contact number"
                               />
                             </div>
-                            <div className="w-full mx-auto text-center my-4">
+                            <div className="w-full mx-auto text-center my-1">
                               <input
                                 type="email"
                                 name="emailAddress"
@@ -324,7 +317,7 @@ const VendorDetailsPage = () => {
                                 placeholder="Email"
                               />
                             </div>
-                            <div className="w-full mx-auto text-center my-4">
+                            <div className="w-full mx-auto text-center my-1">
                               <input
                                 type="date"
                                 name="functionDate"
@@ -340,7 +333,7 @@ const VendorDetailsPage = () => {
                               />
                             </div>
                             {!category === "photographers" && (
-                              <div className="w-full mx-auto text-center my-4">
+                              <div className="w-full mx-auto text-center my-1">
                                 <input
                                   type="number"
                                   name="totalGuests"
@@ -352,7 +345,7 @@ const VendorDetailsPage = () => {
                               </div>
                             )}
                             {!category === "photographers" && (
-                              <div className="w-full mx-auto text-center my-4">
+                              <div className="w-full mx-auto text-center my-1">
                                 <input
                                   type="number"
                                   name="totalRooms"
@@ -432,7 +425,7 @@ const VendorDetailsPage = () => {
                               <span className="text-lg font-medium">
                                 Function Time
                               </span>
-                              <div className="flex justify-between">
+                              <div className="grid grid-cols-2">
                                 <div className="space-x-1">
                                   <input
                                     type="radio"
@@ -483,14 +476,14 @@ const VendorDetailsPage = () => {
                           method="post"
                           className="w-full flex flex-col mb-2"
                         >
-                          <div className="flex space-x-4 mt-2 w-full jusitfy-around">
+                          <div className=" flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-2 w-full jusitfy-around">
                             <input
-                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8"
+                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8 w-full"
                               type="text"
                               placeholder="Full name"
                             />
                             <input
-                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8"
+                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8 w-full"
                               type="phone"
                               placeholder="Mobile number"
                             />
@@ -518,7 +511,7 @@ const VendorDetailsPage = () => {
           )}
         </div>
         {/* review */}
-        <div className="flex flex-col justify-between h-full w-[94%] mx-auto">
+        <div className="flex flex-col justify-between h-full  w-[94%] mx-auto">
           <WriteReview
             venue={venue}
             handleGetReviews={handleGetReviews}

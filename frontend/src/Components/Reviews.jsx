@@ -22,7 +22,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="h-[60vh] w-full">
+    <div className="lg:h-[60vh] w-full">
       <div
         onClick={handleToggle}
         className="cursor-pointer flex items-center space-x-2 px-4 mt-12 mb-4"
@@ -34,7 +34,7 @@ const Reviews = () => {
         {reviewsData.map((review) => (
           <>
             <div key={review._id} className="w-full">
-              <div className="lg:w-2/3 space-y-2 py-2 px-4 shadow-sm bg-red-50 shadow-red-200 rounded-md">
+              <div className="w-[98%] lg:w-2/3 space-y-2 py-2 px-4 shadow-sm bg-red-50 shadow-red-200 rounded-md">
                 <div className="flex space-x-2">
                   <FaUser size={20}></FaUser>
                   <span className="font-semibold text-red-700">

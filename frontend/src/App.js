@@ -1,3 +1,13 @@
+import { Toaster } from "react-hot-toast";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
+import { AuthProvider } from "./Context/Authentication_context/AuthContext";
+import { LocationProvider } from "./Context/Location_context/LocationContext";
+import { ActivityProvider } from "./Context/Activity_context/ActivityContext";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import Vendors from "./pages/Vendors";
@@ -5,27 +15,18 @@ import About from "./pages/About";
 import Contact from "./pages/Contacts/Contact";
 import LogIn from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
 import Footer from "./Components/Footer";
-import { Toaster } from "react-hot-toast";
 import UserProfile from "./pages/UserProfile";
 import UserDetails from "./Components/UserDetails";
 import Settings from "./Components/Settings";
 import Activity from "./Components/Activity";
-import { AuthProvider } from "./Context/Authentication_context/AuthContext";
 import DisplayVendorsData from "./pages/DisplayVendorsData";
-import { LocationProvider } from "./Context/Location_context/LocationContext";
 import VendorDetailsPage from "./Components/VendorDetailsPage";
-import { ActivityProvider } from "./Context/Activity_context/ActivityContext";
 import Photos from "./pages/Photos";
 
 function App() {
   const { location, category, subCategory } = useParams();
+
   return (
     <>
       <Router>

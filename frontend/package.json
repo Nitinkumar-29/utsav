@@ -40,7 +40,9 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.3"
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
   },
   "description": "This application connects 2 types of user.\r 1. People who are seeking some specific service \r 2. People who are providing those services.",
   "main": "tailwind.config.js",

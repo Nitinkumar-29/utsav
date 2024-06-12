@@ -28,7 +28,7 @@ const WriteReview = () => {
   };
   return (
     <>
-      <div className="flex flex-col space-y-3 shadow-md shadow-red-200 rounded-sm p-4 w-2/3">
+      <div className="flex flex-col space-y-3 shadow-md shadow-red-200 rounded-sm p-4 w-[98%] lg:w-2/3">
         {/* write review */}
         <div className="flex items-center space-x-1">
           <span className="text-lg">Write a Review</span>
