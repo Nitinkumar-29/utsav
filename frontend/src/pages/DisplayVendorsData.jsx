@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { vendorsData } from "../vendorsData";
 import { Link, useParams } from "react-router-dom";
 import { LocationContext } from "../Context/Location_context/LocationContext";
-import { AuthContext } from "../Context/Authentication_context/AuthContext";
 import { FaRupeeSign, FaStar } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
@@ -40,7 +39,6 @@ const DisplayVendorsData = () => {
                   /\s+/g,
                   "-"
                 )}`}
-                // to={`/vendors/${location}/${category}/all/${subCategory}/${venue.itemId}`}
                 onClick={() => {
                   window.scrollTo(0, 0);
                 }}

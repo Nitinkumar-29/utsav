@@ -1,13 +1,11 @@
 import React from 'react'
 import Hero from '../Components/Hero'
-import About from './About'
-import Testimonials from './Testimonials'
+import Testimonials from '../Components/Testimonials'
 
 const Home = () => {
   return (
     <div>
       <Hero/>
-      {/* <About/> */}
       <Testimonials/>
     </div>
   )

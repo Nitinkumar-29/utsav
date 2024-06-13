@@ -5,7 +5,7 @@ import { vendorsData } from "../vendorsData";
 import { MdEmail, MdLocationOn, MdPhone, MdPhotoLibrary } from "react-icons/md";
 import { FaPen, FaShare } from "react-icons/fa";
 import { IoMdHeart } from "react-icons/io";
-import WriteReview from "./WriteReview";
+import WriteReview from "../Components/WriteReview";
 import { ActivityContext } from "../Context/Activity_context/ActivityContext";
 import Reviews from "../Components/Reviews";
 

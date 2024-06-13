@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { ImProfile } from "react-icons/im";
 import { RxActivityLog } from "react-icons/rx";
-import { CiSettings } from "react-icons/ci";
 
 const UserProfile = () => {
   const location = useLocation();
@@ -50,26 +49,7 @@ const UserProfile = () => {
               <RxActivityLog size={20} />
               <span className="flex">Activity</span>
             </Link>
-            {/* <Link
-              to="/userProfile/settings"
-              className={`font-medium bg-red-700 ${
-                location.pathname === "/userProfile/settings"
-                  ? "bg-white"
-                  : "bg-red-700"
-              } ${
-                location.pathname === "/userProfile/settings"
-                  ? "text-red-600"
-                  : "text-white"
-              } hover:text-red-600 ${
-                location.pathname === "/userProfile/settings"
-                  ? "hover:bg-white"
-                  : "hover:bg-transparent"
-              } duration-300 cursor-pointer text-sm xl:text-lg font-sans flex items-center space-x-1 lg:mx-2 px-2 my-2 w-full justify-start h-12 shadow-sm shadow-red-900 rounded-md`}
-            >
-              <CiSettings size={25} />
-
-              <span className="flex">Settings</span>
-            </Link> */}
+            
           </div>
           <div className="flex items-center justify-between w-full h-full p-4">
             <Outlet />

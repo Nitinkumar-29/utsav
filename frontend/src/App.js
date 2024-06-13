@@ -21,7 +21,7 @@ import UserDetails from "./Components/UserDetails";
 import Settings from "./Components/Settings";
 import Activity from "./Components/Activity";
 import DisplayVendorsData from "./pages/DisplayVendorsData";
-import VendorDetailsPage from "./Components/VendorDetailsPage";
+import VendorDetailsPage from "./pages/VendorDetailsPage";
 import Photos from "./pages/Photos";
 
 function App() {

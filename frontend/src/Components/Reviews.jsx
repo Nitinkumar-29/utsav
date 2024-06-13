@@ -1,12 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ActivityContext } from "../Context/Activity_context/ActivityContext";
-import {
-  FaArrowDown,
-  FaChevronDown,
-  FaChevronUp,
-  FaUser,
-} from "react-icons/fa";
-import { MdArrowDownward, MdOutlineArrowDownward } from "react-icons/md";
+import { FaChevronDown, FaChevronUp, FaUser } from "react-icons/fa";
 
 const Reviews = () => {
   const { getReviews, reviewsData, formatTime } = useContext(ActivityContext);
