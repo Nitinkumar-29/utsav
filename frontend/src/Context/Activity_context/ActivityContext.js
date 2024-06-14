@@ -144,29 +144,6 @@ export const ActivityProvider = ({ children }) => {
     }
   };
 
-  // fetch all reviews associated with a userId
-  // const handleFetchAllReviews = async (token) => {
-  //   const response = await fetch(`${host}/fetchAllReviews`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "auth-token": token,
-  //     },
-  //   });
-  //   if (!response.ok) {
-  //     toast.error("Could not fetch all reviews right now");
-  //     return;
-  //   }
-
-  //   const data = await response.json();
-  //   console.log(data);
-  //   setFetchedUserReviewsData(data);
-  // };
-  // useEffect(() => {
-  //   handleFetchAllReviews();
-  //    eslint-disable-next-line
-  // }, [token]);
-
   const formatTime = (timestamp) => {
     const currentTime = new Date();
     const postTime = new Date(timestamp);

@@ -49,7 +49,6 @@ const UserProfile = () => {
               <RxActivityLog size={20} />
               <span className="flex">Activity</span>
             </Link>
-            
           </div>
           <div className="flex items-center justify-between w-full h-full p-4">
             <Outlet />

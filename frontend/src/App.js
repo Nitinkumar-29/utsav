@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import Vendors from "./pages/Vendors";
 import About from "./pages/About";
-import Contact from "./pages/Contacts/Contact";
 import LogIn from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
 import Footer from "./Components/Footer";
@@ -55,7 +54,6 @@ function App() {
                 />
                 <Route exactt path="/photos" element={<Photos />} />
                 <Route exact path="/about" element={<About />} />
-                <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/logIn" element={<LogIn />} />
                 <Route exact path="/signUp" element={<SignUp />} />
                 <Route exact path="/userProfile/" element={<UserProfile />}>
