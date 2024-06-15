@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useParams,
+  Navigate,
 } from "react-router-dom";
 import { AuthProvider } from "./Context/Authentication_context/AuthContext";
 import { LocationProvider } from "./Context/Location_context/LocationContext";
@@ -25,6 +26,11 @@ import Photos from "./pages/Photos";
 
 function App() {
   const { location, category, subCategory } = useParams();
+  const token = localStorage.getItem("token");
+
+  const RequireAuth = ({ children }) => {
+    return token ? children : <Navigate to="/login" />;
+  };
 
   return (
     <>
@@ -56,7 +62,15 @@ function App() {
                 <Route exact path="/about" element={<About />} />
                 <Route exact path="/logIn" element={<LogIn />} />
                 <Route exact path="/signUp" element={<SignUp />} />
-                <Route exact path="/userProfile/" element={<UserProfile />}>
+                <Route
+                  exact
+                  path="/userProfile/"
+                  element={
+                    <RequireAuth>
+                      <UserProfile />
+                    </RequireAuth>
+                  }
+                >
                   <Route
                     exact
                     path="/userProfile/profile"
