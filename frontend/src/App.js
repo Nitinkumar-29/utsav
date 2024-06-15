@@ -24,10 +24,12 @@ import DisplayVendorsData from "./pages/DisplayVendorsData";
 import VendorDetailsPage from "./pages/VendorDetailsPage";
 import Photos from "./pages/Photos";
 
+
 function App() {
   const { location, category, subCategory } = useParams();
   const token = localStorage.getItem("token");
 
+  //eslint-disable-next-line
   const RequireAuth = ({ children }) => {
     return token ? children : <Navigate to="/login" />;
   };
@@ -66,9 +68,9 @@ function App() {
                   exact
                   path="/userProfile/"
                   element={
-                    <RequireAuth>
-                      <UserProfile />
-                    </RequireAuth>
+                    // <RequireAuth>
+                    <UserProfile />
+                    /* </RequireAuth> */
                   }
                 >
                   <Route

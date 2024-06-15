@@ -32,7 +32,7 @@ const Login = () => {
             className="flex items-center justify-center my-10 w-full"
             method="post"
           >
-            <div className="flex flex-col space-y-6 items-center justify-start h-[40vh] w-full lg:w-5/6">
+            <div className="flex flex-col space-y-6 items-center justify-start h-[40vh] w-screen sm:w-5/6 md:w-2/3 lg:w-5/6">
               <div className="flex flex-col items-start justify-center w-[60%]">
                 <label htmlFor="email">Email Address:</label>
                 <input
