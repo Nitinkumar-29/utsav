@@ -10,8 +10,7 @@ import { ActivityContext } from "../Context/Activity_context/ActivityContext";
 import Reviews from "../Components/Reviews";
 
 const VendorDetailsPage = () => {
-  const { token, venue, setVenue } = useContext(ActivityContext);
-  const host = "http://localhost:8000";
+  const { token, venue, setVenue, host } = useContext(ActivityContext);
   const [reviewsData, setReviewsData] = useState("");
   const [priceInfo, setPriceInfo] = useState("hidden");
   const [messageSent, setMessageSent] = useState(false);
@@ -131,7 +130,7 @@ const VendorDetailsPage = () => {
     }
 
     try {
-      const response = await fetch(`${host}/api/activity/saveItem`, {
+      const response = await fetch(`${host}/saveItem`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -161,7 +160,7 @@ const VendorDetailsPage = () => {
   const handleGetReviews = async () => {
     if (venue && venue.itemid) {
       const response = await fetch(
-        `${host}/api/activity/getAllReviews/${venue.itemId}`,
+        `${host}/getAllReviews/${venue.itemId}`,
         {
           method: "GET",
           headers: {

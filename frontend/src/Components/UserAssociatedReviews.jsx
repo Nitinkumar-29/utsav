@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 const UserAssociatedReviews = () => {
   const token = localStorage.getItem("token");
-  const host = "http://localhost:8000/api/activity";
+  const {host} = useContext(ActivityContext)
   const [fetchedUserReviewsData, setFetchedUserReviewsData] = useState([]);
   const { formatTime } = useContext(ActivityContext);
 

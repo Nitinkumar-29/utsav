@@ -17,7 +17,8 @@ export const AuthProvider = ({ children }) => {
     address: "",
   });
   const token = localStorage.getItem("token");
-  const host = "http://localhost:8000/api/auth";
+  const host = "https://utsav-backend.vercel.app/api/auth";
+  // const host = "http://localhost:8000/api/auth";
   const navigate = useNavigate();
 
   const handlePasswordType = () => {
