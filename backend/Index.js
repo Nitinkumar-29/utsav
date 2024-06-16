@@ -22,13 +22,12 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.get("/api/", (req, res) => {
+app.get("/", (req, res) => {
   return res.send("Hello World");
 });
 
 // adding routes
 app.use("/api/auth", require("./routes/auth"));
-app.use("/api/notify", require("./routes/notify"));
 app.use("/api/activity", require("./routes/activity"));
 
 app.use(errorHandler);
