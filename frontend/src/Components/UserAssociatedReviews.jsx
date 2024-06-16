@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 const UserAssociatedReviews = () => {
   const token = localStorage.getItem("token");
-  const {host} = useContext(ActivityContext)
+  const { host } = useContext(ActivityContext);
   const [fetchedUserReviewsData, setFetchedUserReviewsData] = useState([]);
   const { formatTime } = useContext(ActivityContext);
 
@@ -77,10 +77,9 @@ const UserAssociatedReviews = () => {
 
       const data = await response.json();
       console.log("Delete response data:", data);
-      toast.success("Review deleted!");
-
       // Fetch the updated reviews list after deletion
       handleFetchAllReviews();
+      toast.success("Review deleted!");
     } catch (error) {
       console.error("Error deleting review:", error);
       toast.error("An error occurred while deleting the review.");

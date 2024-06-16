@@ -124,7 +124,7 @@ export const AuthProvider = ({ children }) => {
       }
       toast.success("user data fetched");
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
