@@ -1,16 +1,6 @@
 # Utsav
 
-Utsav is a platform designed to bridge the gap between service providers and service seekers. Whether you're looking to hire individuals, teams, event organizers, or procure materials, Utsav aims to streamline the process for you. This repository contains both the frontend and backend components of the Utsav application.
-
-## Features
-
-- **Service Provider Connectivity**: Utsav allows service providers to showcase their offerings and connect with potential clients who are seeking their services.
-
-- **Service Seeker Interface**: For those in need of services, Utsav provides an easy-to-use platform to browse available services, hire individuals or teams, and organize events.
-
-- **Comprehensive Service Categories**: Utsav covers a wide range of services including hiring people, teams, function organizers, and materials procurement. 
-
-- **Full Service Packages**: Users also have the option to purchase full packages of services tailored to their specific needs, making event planning and organization hassle-free.
+Utsav is a platform where you can book restaurants, hotel for your special occasion or can book vendors for organizing functions at 🏘️ home with different categories available at  vendors.
 
 ## Getting Started
 
@@ -18,11 +8,13 @@ To get started with Utsav, follow these steps:
 
 1. Clone this repository to your local machine.
 
-2. Navigate to the `frontend` directory and follow the instructions in the `README.md` file to set up the frontend application.
+2. Install all the dependencies with the command `npm i`.
 
-3. Similarly, navigate to the `backend` directory and follow the instructions in the `README.md` file to set up the backend server.
+3. To start the project, use the command `npm start`.
 
-4. Once both frontend and backend setups are complete, you can start using Utsav to explore services, connect with service providers, and fulfill your requirements.
+4. Now navigate to the Utsav-backend repository, clone it the same way, and install dependencies.
+   
+5. To run the backend, use the command `nodemon index.js`, so that you don't have to restart your server when you make changes. 
 
 ## Technologies Used
 
