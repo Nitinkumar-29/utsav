@@ -18,8 +18,8 @@ export const AuthProvider = ({ children }) => {
   });
   const { location, name, subCategory, category } = useParams;
   const token = localStorage.getItem("token");
-  const host =
-    process.env.REACT_APP_AUTH_API_URL || "http://localhost:8000/api/auth";
+  // const host = "http://localhost:8000/api/auth";
+  const host = "https://utsav-backend.vercel.app"
   const navigate = useNavigate();
 
   const handlePasswordType = () => {
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
         console.log(data);
         localStorage.setItem("token", data.authToken);
         toast.success("User logged in successfully!");
-        navigate("/")
+        navigate("/");
         setCredentials({ email: "", password: "" });
       } else {
         toast.error("use correct credentials");

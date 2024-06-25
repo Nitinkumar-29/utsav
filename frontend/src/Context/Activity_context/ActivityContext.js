@@ -6,9 +6,8 @@ export const ActivityContext = createContext();
 export const ActivityProvider = ({ children }) => {
   const [savedItemsData, setSavedItemsData] = useState([]);
   const token = localStorage.getItem("token");
-  const host =
-    process.env.REACT_APP_ACTIVITY_API_URL ||
-    "http://localhost:8000/api/activity";
+  // const host = "http://localhost:8000/api/activity";
+  const host = "https://utsav-backend.vercel.app"
   const [venue, setVenue] = useState(null);
   const inputRef = useRef(null);
   const [reviewsData, setReviewsData] = useState([]);
