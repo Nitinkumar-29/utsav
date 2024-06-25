@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -16,9 +16,10 @@ export const AuthProvider = ({ children }) => {
     mobileNumber: "",
     address: "",
   });
+  const { location, name, subCategory, category } = useParams;
   const token = localStorage.getItem("token");
-  const host = "https://utsav-backend.vercel.app/api/auth";
-  // const host = "http://localhost:8000/api/auth";
+  const host =
+    process.env.REACT_APP_AUTH_API_URL || "http://localhost:8000/api/auth";
   const navigate = useNavigate();
 
   const handlePasswordType = () => {
@@ -89,8 +90,8 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         console.log(data);
         localStorage.setItem("token", data.authToken);
-        navigate("/");
         toast.success("User logged in successfully!");
+        navigate("/")
         setCredentials({ email: "", password: "" });
       } else {
         toast.error("use correct credentials");
@@ -117,16 +118,20 @@ export const AuthProvider = ({ children }) => {
       }
       const data = await response.json();
       console.log(data);
+      toast.success("user data fetched");
       if (Array.isArray(data.user)) {
         setUserData(data.user);
       } else {
         setUserData([data.user]); // Convert single object to array
       }
-      toast.success("user data fetched");
     } catch (error) {
       toast.error(error.message);
     }
   };
+  // useEffect(() => {
+  //   getUserData()
+  //   // eslint-disabe-next-line
+  // }, [token]);
 
   return (
     <>

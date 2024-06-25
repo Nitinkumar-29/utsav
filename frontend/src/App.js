@@ -22,8 +22,7 @@ import Settings from "./Components/Settings";
 import Activity from "./Components/Activity";
 import DisplayVendorsData from "./pages/DisplayVendorsData";
 import VendorDetailsPage from "./pages/VendorDetailsPage";
-import Photos from "./pages/Photos";
-
+import { VenueBooking } from "./pages/VenueBooking";
 
 function App() {
   const { location, category, subCategory } = useParams();
@@ -60,7 +59,11 @@ function App() {
                   path="/vendors/:location/:category?/:all?/:subCategory?/:name?"
                   element={<VendorDetailsPage />}
                 />
-                <Route exactt path="/photos" element={<Photos />} />
+                <Route
+                  exact
+                  path="/vendors/:location/:category?/:all?/:subCategory?/:name/booking-venue"
+                  element={<VenueBooking />}
+                />
                 <Route exact path="/about" element={<About />} />
                 <Route exact path="/logIn" element={<LogIn />} />
                 <Route exact path="/signUp" element={<SignUp />} />

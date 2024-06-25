@@ -29,7 +29,7 @@ const SignUp = () => {
         style={{ fontFamily: "sans-serif" }}
         className="flex justify-center items-center mx-auto w-full  bg-gradient-to-tr from-red-100 to-blue-100 lg:h-[90vh]"
       >
-        <div className="flex items-center flex-col h-full mt-10 w-full lg:w-1/2">
+        <div className="flex items-center flex-col h-fit mt-10  w-full lg:w-1/2">
           <span className="font-semibold text-3xl">Create Account</span>
           <form
             onSubmit={handleSignUp}
@@ -48,7 +48,6 @@ const SignUp = () => {
                     value={createUserCredentials.firstName}
                     onChange={onChange}
                     name="firstName"
-                    id="first name"
                     required
                     placeholder="First name"
                   />
@@ -65,7 +64,6 @@ const SignUp = () => {
                     value={createUserCredentials.lastName}
                     onChange={onChange}
                     name="lastName"
-                    id="last name"
                     required
                     placeholder="Last name"
                   />
@@ -84,7 +82,6 @@ const SignUp = () => {
                     value={createUserCredentials.mobileNumber}
                     onChange={onChange}
                     name="mobileNumber"
-                    id="mobile number"
                     minLength={10}
                     maxLength={10}
                     required
@@ -104,7 +101,6 @@ const SignUp = () => {
                     onChange={onChange}
                     name="email"
                     required
-                    id="email"
                     placeholder="Email address"
                   />
                 </div>
@@ -122,7 +118,6 @@ const SignUp = () => {
                     value={createUserCredentials.password}
                     onChange={onChange}
                     name="password"
-                    id="setPassword"
                     required
                     placeholder="Should contain atleast 8 characters"
                   />
@@ -148,7 +143,6 @@ const SignUp = () => {
                     value={createUserCredentials.confirmPassword}
                     onChange={onChange}
                     name="confirmPassword"
-                    id="confirmPassword"
                     required
                     placeholder="Password must be same"
                   />
@@ -164,7 +158,6 @@ const SignUp = () => {
                 value={createUserCredentials.address}
                 onChange={onChange}
                 name="address"
-                id="address"
                 required
                 cols="30"
                 rows="10"

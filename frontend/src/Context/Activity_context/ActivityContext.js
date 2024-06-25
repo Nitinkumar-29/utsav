@@ -6,14 +6,21 @@ export const ActivityContext = createContext();
 export const ActivityProvider = ({ children }) => {
   const [savedItemsData, setSavedItemsData] = useState([]);
   const token = localStorage.getItem("token");
-  const host = "https://utsav-backend.vercel.app/api/activity"
-  // const host = "http://localhost:8000/api/activity";
+  const host =
+    process.env.REACT_APP_ACTIVITY_API_URL ||
+    "http://localhost:8000/api/activity";
   const [venue, setVenue] = useState(null);
   const inputRef = useRef(null);
   const [reviewsData, setReviewsData] = useState([]);
   const [reviewText, setReviewText] = useState("");
   const [fetchedUserReviewsData, setFetchedUserReviewsData] = useState([]);
-
+  const [verifyUserData, setVerifyUserData] = useState({
+    name: "",
+    email: "",
+    mobileNumber: "",
+  });
+  const userVerifiedToken =
+    JSON.parse(localStorage.getItem("userVerifiedToken")) || null;
   const handleClear = () => {
     inputRef.current.value = "";
   };
@@ -39,7 +46,7 @@ export const ActivityProvider = ({ children }) => {
 
       const data = await response.json();
       console.log(data);
-      toast.success("Data saved successfully!");
+      toast.success("shortlisted");
     } catch (error) {
       console.error(error.message);
       toast.error(error.message);
@@ -68,25 +75,10 @@ export const ActivityProvider = ({ children }) => {
         setSavedItemsData(sortedSavedData);
         console.log(sortedSavedData);
         console.log(data);
-      } catch (error) {
-        toast.error(error.message);
-      }
-    }
-  };
-  const removeItem = async (_id) => {
-    if (token) {
-      try {
-        const response = await fetch(`${host}/removeItem/${_id}`, {
-          method: "DELETE",
-          headers: {
-            "auth-token": token,
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Can't process the request right now");
-        }
-        toast.success("Item removed successfully");
-        setSavedItemsData(savedItemsData.filter((item) => item._id !== _id));
+        console.log(
+          "Activity API URL:",
+          process.env.REACT_APP_ACTIVITY_API_URL
+        );
       } catch (error) {
         toast.error(error.message);
       }
@@ -145,6 +137,76 @@ export const ActivityProvider = ({ children }) => {
     }
   };
 
+  const removeItem = async (_id) => {
+    if (token) {
+      try {
+        const response = await fetch(`${host}/removeItem/${_id}`, {
+          method: "DELETE",
+          headers: {
+            "auth-token": token,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Can't process the request right now");
+        }
+        toast.success("Item removed successfully");
+        setSavedItemsData(savedItemsData.filter((item) => item._id !== _id));
+      } catch (error) {
+        toast.error(error.message);
+      }
+    }
+  };
+
+  // verify userr data before booking
+  const handleVerifyUserData = async () => {
+    const { name, email, mobileNumber } = verifyUserData;
+    const response = await fetch(`${host}/verifyUserBeforeBooking`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, mobileNumber }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem("userVerifiedToken", JSON.stringify(data));
+    }
+  };
+
+  // fetch user placed orders
+  const fetchUserPlacedOrders = async () => {
+    try {
+      const response = await fetch(`${host}/fetchPlacedOrdersData`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.error || `HTTP error! status: ${response.status}`
+        );
+      }
+
+      const data = await response.json();
+
+      console.log(data);
+      toast.success("Data fetched!");
+    } catch (error) {
+      console.error("Error fetching placed orders:", error);
+      toast.error(`Error fetching data: ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserPlacedOrders();
+    // eslint-disable-next-line
+  }, [token]);
+
   const formatTime = (timestamp) => {
     const currentTime = new Date();
     const postTime = new Date(timestamp);
@@ -168,7 +230,6 @@ export const ActivityProvider = ({ children }) => {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
-        // timeZoneName: "short",
       };
       return new Date(timestamp).toLocaleDateString("en-US", options);
     }
@@ -197,6 +258,10 @@ export const ActivityProvider = ({ children }) => {
           fetchedUserReviewsData,
           // handleFetchAllReviews,
           formatTime,
+          handleVerifyUserData,
+          verifyUserData,
+          setVerifyUserData,
+          userVerifiedToken,
         }}
       >
         {children}

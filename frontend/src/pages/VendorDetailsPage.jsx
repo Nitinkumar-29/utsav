@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { vendorsData } from "../vendorsData";
 import { MdEmail, MdLocationOn, MdPhone, MdPhotoLibrary } from "react-icons/md";
@@ -12,10 +12,12 @@ import Reviews from "../Components/Reviews";
 const VendorDetailsPage = () => {
   const { token, venue, setVenue, host } = useContext(ActivityContext);
   const [reviewsData, setReviewsData] = useState("");
-  const [priceInfo, setPriceInfo] = useState("hidden");
   const [messageSent, setMessageSent] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const { category, name, subCategory, location } = useParams();
+  const [venueSavedData, setVenueSavedData] = useState({});
+  const navigate = useNavigate();
+
   const venueName = name.replace(/-/g, " ");
   // const [venue, setVenue] = useState(null);
   const [enquiryFormData, setEnquiryFormData] = useState({
@@ -109,15 +111,7 @@ const VendorDetailsPage = () => {
     }
   };
 
-  const handleVendorDetails = async () => {
-    const response = await fetch(`${host}/api/notify/send-sms`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  };
-
+  // save item
   const handleSaveItem = async () => {
     if (!token) {
       toast("Please login first");
@@ -152,22 +146,14 @@ const VendorDetailsPage = () => {
     }
   };
 
-  const handleBookVenueNow = async () => {
-    if (venueAvailable) {
-    }
-  };
-
   const handleGetReviews = async () => {
     if (venue && venue.itemid) {
-      const response = await fetch(
-        `${host}/getAllReviews/${venue.itemId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${host}/getAllReviews/${venue.itemId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (!response.ok) {
         throw new Error("Could not get reviews data");
       }
@@ -177,6 +163,22 @@ const VendorDetailsPage = () => {
     } else {
       console.log("didn't get venue and itemId");
     }
+  };
+
+  // const onChangeVerifyUserData = (e) => {
+  //   setVerifyUserData({ ...verifyUserData, [e.target.name]: e.target.value });
+  // };
+
+  // const handleVerifyUserDataBeforeBooking = (e) => {
+  //   e.preventDefault();
+  //   handleVerifyUserData();
+  // };
+
+  const handleBookVenue = async () => {
+    navigate(
+      `/vendors/${location}/${category}/all/${subCategory}/${name}/booking-venue`
+    );
+    console.log(name);
   };
 
   return (
@@ -192,7 +194,7 @@ const VendorDetailsPage = () => {
               <div className="flex flex-col">
                 <div className="relative flex flex-col justify-center sm:items-center h-full sm:h-[76.5vh] w-full">
                   <img
-                    className="rounded-smh-fit sm:h-[340px] lg:shadow-sm shadow-black w-[500px] xs:w-screen sm:w-[600px] lg:w-[500px] xl:w-full rounded-t-md"
+                    className="rounded-smh-fit sm:h-[340px] lg:shadow-sm shadow-black w-[500px] xs:w-screen sm:w-[600px] lg:w-[500px] xl:w-[740px] rounded-t-md"
                     src={`/vendorsDataImages/${venue.image}`}
                     alt=""
                   />
@@ -225,7 +227,11 @@ const VendorDetailsPage = () => {
                         onClick={handleSaveItem}
                         className="flex items-center text-slate-500 hover:text-red-600 cursor-pointer space-x-1 w-full justify-center  border-r-[1px] border-slate-500"
                       >
+                        {/* {`item-saved-${venue.itemId}` === venueSavedData.itemId ? (
+                          <IoMdHeart color="red" />
+                        ) : ( */}
                         <IoMdHeart />
+                        {/* )} */}
                         <span className="">Shortlist</span>
                       </button>
                       <div className="flex items-center text-slate-500 hover:text-red-600 cursor-pointer space-x-1 w-full justify-center ">
@@ -243,7 +249,7 @@ const VendorDetailsPage = () => {
                 </div>
               </div>
               {/* contact components */}
-              <div className="flex flex-col space-y-6 w-full lg:w-[560px] pt-4 ">
+              <div className="flex flex-col space-y-6 w-full lg:w-[560px] pt-6">
                 <div className="h-fit bg-transparent w-full">
                   <div className="flex lg:text-lg items-center justify-around h-fit w-full">
                     <button
@@ -466,40 +472,30 @@ const VendorDetailsPage = () => {
                         </form>
                       </div>
                     ) : (
-                      <div className="flex flex-col justify-start w-full p-4">
-                        <span className="font-medium">
-                          Verify the mobile number to contact the vendor
-                        </span>
-                        <form
-                          onSubmit={handleVendorDetails}
-                          method="post"
-                          className="w-full flex flex-col mb-2"
-                        >
-                          <div className=" flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-2 w-full jusitfy-around">
-                            <input
-                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8 w-full"
-                              type="text"
-                              placeholder="Full name"
-                            />
-                            <input
-                              className="border-gray-400 focus:outline-none focus:placeholder:text-red-200 border-b-[1px]  hover:border-black h-8 w-full"
-                              type="phone"
-                              placeholder="Mobile number"
-                            />
-                          </div>
-                          <div className="flex flex-col w-full">
-                            <div className="flex space-x-1 mt-3 items-center">
-                              <input type="checkbox" />
-                              <span>Text me vendors details</span>
-                            </div>
-                            <button
-                              type="submit"
-                              className="mt-4 bg-red-600 text-white hover:bg-red-700 py-3 rounded-md text-xl duration-300"
+                      <div className="flex flex-col justify-start w-full p-4 space-y-3">
+                        {!token && (
+                          <span className="font-medium">
+                            Please{" "}
+                            <Link
+                              onClick={() => {
+                                window.scrollTo(0, 0);
+                              }}
+                              className="text-blue-500 underline underline-offset-2"
+                              to="/logIn"
                             >
-                              Verify
-                            </button>
-                          </div>
-                        </form>
+                              login
+                            </Link>{" "}
+                            first, then you will be provided extra features
+                          </span>
+                        )}
+                        {token && (
+                          <button
+                            onClick={handleBookVenue}
+                            className="w-full text-white bg-red-700 py-2 rounded-md"
+                          >
+                            Continue
+                          </button>
+                        )}
                       </div>
                     )}
                   </div>

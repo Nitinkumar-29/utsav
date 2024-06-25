@@ -3,7 +3,7 @@ import React from "react";
 const Testimonials = () => {
   return (
     <>
-      <div className="pb-20 flex justify-center items-center bg-gradient-to-tl from-blue-100 to-red-100 h-fit">
+      <div className="pb-20 flex justify-center items-center bg-gradient-to-bl from-blue-100 to-red-100 h-fit">
         <div className="mt-28 flex flex-col items-center justify-center">
           <span
             className="mb-10 font-semibold text-5xl underline underline-offset-[4.5px] decoration-red-600"

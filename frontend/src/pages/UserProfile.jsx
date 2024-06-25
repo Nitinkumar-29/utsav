@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { ImProfile } from "react-icons/im";
 import { RxActivityLog } from "react-icons/rx";
+import { AuthContext } from "../Context/Authentication_context/AuthContext";
 
 const UserProfile = () => {
   const location = useLocation();

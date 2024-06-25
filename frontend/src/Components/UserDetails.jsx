@@ -33,9 +33,6 @@ const UserDetails = () => {
     });
   };
 
-  const handleGetUserData = async () => {
-    getUserData();
-  };
 
   const handleUpdateUserData = async () => {
     try {
@@ -51,7 +48,7 @@ const UserDetails = () => {
         throw new Error("Failed to update user data");
       }
       toast.success("User data successfully updated");
-      handleGetUserData();
+      getUserData();
       setEditUserData(true);
     } catch (error) {
       toast.error("Failed to update user data");
@@ -59,7 +56,7 @@ const UserDetails = () => {
   };
 
   useEffect(() => {
-    handleGetUserData();
+    getUserData();
     // eslint-disable-next-line
   }, [token]);
 

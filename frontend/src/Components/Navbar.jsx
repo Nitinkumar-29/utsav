@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RxCross1, RxHamburgerMenu, RxPerson } from "react-icons/rx";
 import toast from "react-hot-toast";
 import "../styles/Navbar.css";
+import { AuthContext } from "../Context/Authentication_context/AuthContext";
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,6 +11,7 @@ const Navbar = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [displayType, setDisplayType] = useState("hidden");
+  const { getUserData } = useContext(AuthContext);
 
   const handleToggleDisplayType = () => {
     setDisplayType((prev) => (prev === "hidden" ? "flex" : "hidden"));

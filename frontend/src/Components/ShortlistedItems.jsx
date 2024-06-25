@@ -34,43 +34,41 @@ const ShortlistedItems = () => {
         {savedItemsData?.length !== 0 ? (
           savedItemsData?.map((item) => {
             return (
-              <>
-                <div
-                  className="flex flex-col justify-center items-start rounded-md p-3 cursor-pointer bg-opacity-250 hover:bg-white hover:scale-105 duration-300 shadow-xl shadow-red-50 space-y-3"
-                  key={item._id}
-                >
-                  <div className="relative w-fit h-fit">
-                    <img
-                      className="h-[200px] w-[320px] rounded-md"
-                      src={`/vendorsDataImages/${item.image}`}
-                      alt=""
-                    />
-                    <RxCrossCircled
-                      onClick={() => {
-                        handleRemoveItem(item._id);
-                      }}
-                      className="absolute bg-black  top-1 right-1 rounded-full"
-                      color="white"
-                      size={25}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start w-full">
-                    <div className="flex items-center justify-between w-full">
-                      <span className="font-medium text-sm">{item.name}</span>
-                      <div className="flex items-center space-x-1">
-                        <MdStar color="orange" /> <span>{item.rating}</span>
-                      </div>
-                    </div>
+              <div
+                className="flex flex-col justify-center items-start rounded-md p-3 cursor-pointer bg-opacity-250 hover:bg-white hover:scale-105 duration-300 shadow-xl shadow-red-50 space-y-3"
+                key={item._id}
+              >
+                <div className="relative w-fit h-fit">
+                  <img
+                    className="h-[200px] w-[320px] rounded-md"
+                    src={`/vendorsDataImages/${item.image}`}
+                    alt=""
+                  />
+                  <RxCrossCircled
+                    onClick={() => {
+                      handleRemoveItem(item._id);
+                    }}
+                    className="absolute bg-black  top-1 right-1 rounded-full"
+                    color="white"
+                    size={25}
+                  />
+                </div>
+                <div className="flex flex-col items-start w-full">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="font-medium text-sm">{item.name}</span>
                     <div className="flex items-center space-x-1">
-                      <MdLocationPin />
-                      <span>
-                        {item.location.charAt(0).toUpperCase() +
-                          item.location.slice(1)}
-                      </span>
+                      <MdStar color="orange" /> <span>{item.rating}</span>
                     </div>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <MdLocationPin />
+                    <span>
+                      {item.location?.charAt(0).toUpperCase() +
+                        item.location?.slice(1)}
+                    </span>
                   </div>
                 </div>
-              </>
+              </div>
             );
           })
         ) : (
