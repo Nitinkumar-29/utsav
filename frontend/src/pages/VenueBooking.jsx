@@ -41,7 +41,7 @@ export const VenueBooking = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-center h-[89.5vh] shadow-inner shadow-gray-400 bg-gradient-to-tr from-red-100 to-blue-100 p-4 w-full">
+      {/* <div className="flex items-center justify-center h-[89.5vh] shadow-inner shadow-gray-400 bg-gradient-to-tr from-red-100 to-blue-100 p-4 w-full">
         <div className="w-[98%] h-[98%] border-[1px] border-gray-400 p-4 rounded-md">
           <h3 className="my-3 text-2xl text-red-700 font-semibold w-full">
             Complete the venue booking process:
@@ -154,7 +154,8 @@ export const VenueBooking = () => {
             <div className="flex flex-col w-full lg:w-1/3 border-2 border-black h-[90%]"></div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <div className="w-full h-[89vh] text-center mt-32 text-4xl">Under maintenance please wait for a while</div>
     </>
   );
 };
